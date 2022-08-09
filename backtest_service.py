@@ -44,7 +44,7 @@ def get_pnl_for_range(
 
 
     end_start = format_datetime_for_cb(end_date)
-    ending_2 = format_datetime_for_cb(end_start + timedelta(minutes=5))
+    ending_2 = format_datetime_for_cb(end_date + timedelta(minutes=5))
 
     end_results = c.get_product_historic_rates(
         product_id=asset,

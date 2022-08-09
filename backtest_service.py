@@ -30,8 +30,9 @@ def get_pnl_for_range(
     @return float for profit or loss based on coinbase api
     """
 
-    start = f'{start_date.strftime("%Y")}-{start_date.strftime("%b")}-{start_date.strftime("%d")} {start_date.strftime("%H")}:{start_date.strftime("%M")}:00.000'
-    end = f'{end_date.strftime("%Y")}-{end_date.strftime("%b")}-{end_date.strftime("%d")} {end_date.strftime("%H")}:{end_date.strftime("%M")}:00.000'
+    # 2022-Aug-08 18:19:00.000
+    start = f'{start_date.strftime("%Y")}-{start_date.strftime("%m")}-{start_date.strftime("%d")} {start_date.strftime("%H")}:{start_date.strftime("%M")}:00.000'
+    end = f'{end_date.strftime("%Y")}-{end_date.strftime("%m")}-{end_date.strftime("%d")} {end_date.strftime("%H")}:{end_date.strftime("%M")}:00.000'
 
     start_results = c.get_product_historic_rates(
         product_id=asset,

@@ -15,7 +15,7 @@ def get_pnl_for_range(
     asset, 
     start_date: datetime, 
     end_date: datetime, 
-    seconds_frame = 10*60,
+    seconds_frame = 15*60,
     default_size = 10000,
     side = "BUY",
     ):

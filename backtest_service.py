@@ -27,7 +27,7 @@ def get_pnl_for_range(
     @param start_date: the start date for the position
     @param end_date
     @param seconds_frame: the interval which the tick data is
-    @param default_size: how much money
+    @param default_size: how much money in USD
     @param side: BUY or SELL
 
     @return float for profit or loss based on coinbase api
@@ -52,23 +52,14 @@ def get_pnl_for_range(
         end = ending_2,
         granularity=seconds_frame)
 
-    print(start_results)
-    # TODO: error handling
-    # start_price = start_results[0]
-    print("end")
-    print(end_results)
+    # Columns= ["Date","Open","High","Low","Close","Volume"]
+    start_price = start_results[0][1]
+    end_price = end_results[0][1]
 
-    # Get order book and find price impact
+    # Get order book and find price impact for a given size
 
-    # historical = pd.DataFrame(c.get_product_historic_rates(product_id='ETH-USD'))
-    # historical.columns= ["Date","Open","High","Low","Close","Volume"]
-    # historical['Date'] = pd.to_datetime(historical['Date'], unit='s')
-    # historical.set_index('Date', inplace=True)
-    # historical.sort_values(by='Date', ascending=True, inplace=True)
-    # historical
-
-    return
+    return start_price - end_price
 
 test1 = datetime.now() - timedelta(1)
 test2 = test1 - timedelta(1) 
-get_pnl_for_range('BTC-USD', test1, test2)
+print(get_pnl_for_range('BTC-USD', test1, test2))

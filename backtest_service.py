@@ -11,12 +11,21 @@ File that includes APIs for backtesting a strategy.
 
 c = cbpro.PublicClient()
 
-def get_pnl_for_range(asset, start_date: datetime, end_date: datetime, seconds_frame = 10*60):
+def get_pnl_for_range(
+    asset, 
+    start_date: datetime, 
+    end_date: datetime, 
+    seconds_frame = 10*60,
+    default_size = 10000,
+    side = "BUY",
+    ):
     """
     @param asset: asset that we want to check
     @param start_date: the start date for the position
     @param end_date
     @param seconds_frame: the interval which the tick data is
+    @param default_size: how much money
+    @param side: BUY or SELL
 
     @return float for profit or loss based on coinbase api
     """
@@ -36,7 +45,8 @@ def get_pnl_for_range(asset, start_date: datetime, end_date: datetime, seconds_f
 
     # TODO: error handling
     start_price = start_results[0]
-        
+
+    # Get order book and find price impact
 
     # historical = pd.DataFrame(c.get_product_historic_rates(product_id='ETH-USD'))
     # historical.columns= ["Date","Open","High","Low","Close","Volume"]

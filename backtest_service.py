@@ -1,7 +1,7 @@
 import cbpro
 import os
 from enum import Enum
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from time import sleep
 import pandas as pd
 
@@ -43,6 +43,7 @@ def get_pnl_for_range(
         start=end,
         granularity=seconds_frame)
 
+    print(start_results + "\n" + end_results)
     # TODO: error handling
     start_price = start_results[0]
 
@@ -56,3 +57,7 @@ def get_pnl_for_range(
     # historical
 
     return
+
+today = datetime.now()
+yesterday = today - timedelta(1) 
+get_pnl_for_range('BTC-USD', yesterday, today)

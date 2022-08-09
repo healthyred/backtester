@@ -43,9 +43,11 @@ def get_pnl_for_range(
         start=end,
         granularity=seconds_frame)
 
-    print(start_results + "\n" + end_results)
+    print(start_results)
     # TODO: error handling
     start_price = start_results[0]
+    print("end")
+    print(end_results)
 
     # Get order book and find price impact
 
